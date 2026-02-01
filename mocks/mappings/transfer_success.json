@@ -1,0 +1,15 @@
+{
+  "priority": 10,
+  "request": {
+    "method": "POST",
+    "urlPath": "/api/bank/transfer"
+  },
+  "response": {
+    "status": 200,
+    "jsonBody": {
+      "status": "CONFIRMED",
+      "bankTransactionId": "bank_tx_999"
+    },
+    "headers": { "Content-Type": "application/json" }
+  }
+}
