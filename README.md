@@ -326,24 +326,17 @@ cd wallet-service
 O projeto utiliza um arquivo `.env` para gerenciar credenciais sensíveis.
 Crie um arquivo chamado `.env` na raiz do projeto (baseado no `.env-example`) e preencha conforme o exemplo abaixo:
 
-> **Nota:** A `DB_HOST` deve apontar para `db` (nome do serviço no Docker), e não `localhost`.
-
 ```properties
-# --- Configuração do Banco de Dados (Aplicação) ---
-DB_URL=jdbc:postgresql://db:5432/wallet_service_db
-DB_USERNAME=postgres
+# --- Banco de Dados ---
+# Estes valores configuram tanto a criação do container quanto o acesso da aplicação
+DB_NAME=wallet_service_db
+DB_USER=postgres
 DB_PASSWORD=secret_password
-
-# --- Configuração do Container Postgres (Docker) ---
-POSTGRES_DB=wallet_service_db
-POSTGRES_USER=postgres
-POSTGRES_PASSWORD=secret_password
+DB_PORT=5432
 
 # --- Configuração de E-mail (Mailpit) ---
 MAIL_HOST=mailpit
 MAIL_PORT=1025
-MAIL_USERNAME=
-MAIL_PASSWORD=
 
 # --- Segurança ---
 # Chave para assinatura dos tokens JWT (Mínimo 32 caracteres)
@@ -352,6 +345,7 @@ JWT_SECRET=coloque_sua_chave_secreta_aqui_com_pelo_menos_32_chars
 WEBHOOK_SECRET=segredo_para_validar_webhooks
 
 # --- Integrações (Mocks) ---
+# Endpoint do Wiremock para simulação de serviços externos
 MOCK_URL=http://wiremock:8080
 ```
 
